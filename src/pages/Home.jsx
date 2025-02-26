@@ -1,34 +1,38 @@
-import { Shield, Lock, AlertTriangle, HelpCircle } from 'lucide-react';
-import { toast } from 'react-toastify';
+import { Shield, Lock, AlertTriangle, HelpCircle } from "lucide-react";
+import { toast } from "react-toastify";
 
 const Home = () => {
   const handleServiceClick = (service) => {
     toast.info(`سيتم إطلاق خدمة ${service} قريباً!`, {
-      icon: "🚀"
+      icon: "🚀",
     });
   };
 
   const services = [
     {
+      icon: HelpCircle,
+      title: "المنصة التعليمية",
+      description:
+        "منصة تعليمية متكاملة تقدم دورات وورش عمل في مجال الأمن السيبراني والحماية الرقمية",
+    },
+    {
       icon: Shield,
-      title: "حماية رقمية",
-      description: "نقدم حلولاً متكاملة لحماية هويتك الرقمية وخصوصيتك على الإنترنت"
+      title: "الدعم الرقمي للأفراد",
+      description:
+        "خدمات متخصصة للأفراد تشمل الحماية الشخصية والتوعية الأمنية والدعم التقني المستمر",
     },
     {
       icon: Lock,
-      title: "أمان البيانات",
-      description: "نساعدك في حماية بياناتك الشخصية من الاختراق والتسريب"
+      title: "المؤسسات والشركات",
+      description:
+        "حلول أمنية متكاملة للشركات والمؤسسات لحماية بياناتها وأنظمتها من التهديدات الإلكترونية",
     },
     {
       icon: AlertTriangle,
-      title: "تحذيرات أمنية",
-      description: "نبهك من المخاطر المحتملة ونقدم إرشادات الحماية المناسبة"
+      title: "الاستشارات",
+      description:
+        "خدمات استشارية احترافية في مجال الأمن السيبراني وتقييم المخاطر وتطوير الاستراتيجيات الأمنية",
     },
-    {
-      icon: HelpCircle,
-      title: "دعم مستمر",
-      description: "فريق متخصص لمساعدتك على مدار الساعة في جميع المشاكل الأمنية"
-    }
   ];
 
   return (
@@ -41,16 +45,19 @@ const Home = () => {
               مرحباً بكم في آمن تماماً
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
-              نحن نهتم بأمانك الرقمي ونساعدك في حماية خصوصيتك عبر حلول متكاملة وفعالة
+              نحن نهتم بأمانك الرقمي ونساعدك في حماية خصوصيتك عبر حلول متكاملة
+              وفعالة
             </p>
             <div className="flex justify-center gap-4">
-              <button 
-                onClick={() => toast.success("سيتم تحويلك إلى صفحة التسجيل قريباً!")}
+              <button
+                onClick={() =>
+                  toast.success("سيتم تحويلك إلى صفحة التسجيل قريباً!")
+                }
                 className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
               >
                 ابدأ الآن
               </button>
-              <button 
+              <button
                 onClick={() => toast.info("شاهد الفيديو التعريفي قريباً!")}
                 className="bg-white text-indigo-600 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl border border-indigo-200"
               >
@@ -67,7 +74,7 @@ const Home = () => {
           {services.map((service, index) => {
             const IconComponent = service.icon;
             return (
-              <div 
+              <div
                 key={index}
                 onClick={() => handleServiceClick(service.title)}
                 className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer"
