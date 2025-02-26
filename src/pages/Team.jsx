@@ -8,6 +8,7 @@ import hasan from "../assets/team/hasan.jpg";
 import judy from "../assets/team/judy.jpg";
 import reda from "../assets/team/reda.jpg";
 import rama from "../assets/team/rama.jpg";
+import walled from "../assets/team/walled.jpg";
 
 const teamMembers = [
   {
@@ -38,6 +39,12 @@ const teamMembers = [
     name: "Reda Nakshbandi",
     role: "مديرة التوعية الأمنية",
     image: reda,
+    bio: "متخصصة في برامج التوعية الأمنية وتثقيف المستخدمين",
+  },
+  {
+    name: "Walled Bitar",
+    role: "مديرة التوعية الأمنية",
+    image: walled,
     bio: "متخصصة في برامج التوعية الأمنية وتثقيف المستخدمين",
   },
   {
@@ -75,9 +82,7 @@ const Team = () => {
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12">
       <div className="max-w-[280px] mx-auto sm:max-w-7xl sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-indigo-600 mb-6">
-            فريق العمل
-          </h1>
+          <h1 className="text-5xl font-bold text-[#1a9078] mb-6">فريق العمل</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             نخبة من الخبراء المتخصصين في مجال الأمن السيبراني
           </p>
@@ -101,7 +106,7 @@ const Team = () => {
                 <div className="absolute bottom-6 left-6 right-6">
                   <button
                     onClick={() => handleContactMember(member.name)}
-                    className="w-full bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 transition-colors"
+                    className="w-full bg-[#1a9078] text-white py-2 px-4 rounded-lg hover:bg-[#158970] transition-colors"
                   >
                     تواصل معي
                   </button>

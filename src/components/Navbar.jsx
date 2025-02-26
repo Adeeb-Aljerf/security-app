@@ -20,7 +20,7 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <nav className="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white sticky top-0 z-50 shadow-lg">
+    <nav className="bg-gradient-to-r from-[#1a9078] to-[#1a9078] text-white sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link
@@ -35,7 +35,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md hover:bg-indigo-500 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md hover:bg-[#158970] focus:outline-none"
             >
               {isOpen ? (
                 <X className="h-6 w-6" />
@@ -53,8 +53,8 @@ const Navbar = () => {
                 to={item.path}
                 className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                   isActive(item.path)
-                    ? "bg-white text-indigo-600"
-                    : "hover:bg-indigo-500"
+                    ? "bg-white text-[#1a9078]"
+                    : "hover:bg-[#158970]"
                 }`}
               >
                 {item.label}
@@ -72,8 +72,8 @@ const Navbar = () => {
                 to={item.path}
                 className={`block px-3 py-2 rounded-md text-base font-medium ${
                   isActive(item.path)
-                    ? "bg-white text-indigo-600"
-                    : "hover:bg-indigo-500"
+                    ? "bg-white text-[#1a9078]"
+                    : "hover:bg-[#158970]"
                 }`}
                 onClick={() => setIsOpen(false)}
               >

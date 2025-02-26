@@ -68,29 +68,27 @@ const StatsCard = ({ title, value, progress, color, icon: Icon }) => (
           mb: 2,
         }}
       >
-        <Avatar sx={{ bgcolor: `${color}.light`, color: `${color}.main` }}>
+        <Avatar sx={{ bgcolor: `${color}20`, color: color }}>
           <Icon size={20} />
         </Avatar>
         <Typography variant="h6" color="text.secondary">
           {title}
         </Typography>
       </Box>
-      <Typography
-        variant="h3"
-        color={`${color}.main`}
-        sx={{ mb: 1, textAlign: "right" }}
-      >
+      <Typography variant="h3" sx={{ mb: 1, textAlign: "right", color: color }}>
         {value}
       </Typography>
       <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
         <LinearProgress
           variant="determinate"
           value={progress}
-          color={color}
           sx={{
             flexGrow: 1,
             height: 8,
             borderRadius: 4,
+            "& .MuiLinearProgress-bar": {
+              backgroundColor: color,
+            },
           }}
         />
         <Typography variant="body2" color="text.secondary">
@@ -101,7 +99,7 @@ const StatsCard = ({ title, value, progress, color, icon: Icon }) => (
   </Card>
 );
 
-const ActivityItem = ({ title, time, type, icon: Icon }) => (
+const ActivityItem = ({ title, time, type, icon: Icon, color }) => (
   <ListItem
     sx={{
       py: 2,
@@ -116,8 +114,8 @@ const ActivityItem = ({ title, time, type, icon: Icon }) => (
     <ListItemAvatar>
       <Avatar
         sx={{
-          bgcolor: type === "video" ? "primary.light" : "secondary.light",
-          color: type === "video" ? "primary.main" : "secondary.main",
+          bgcolor: `${color}20`,
+          color: color,
         }}
       >
         <Icon size={20} />
@@ -155,7 +153,7 @@ const DashboardHome = () => {
         <Grid item xs={12}>
           <Typography
             variant="h4"
-            sx={{ mb: { xs: 2, md: 4 }, fontWeight: 700 }}
+            sx={{ mb: { xs: 2, md: 4 }, fontWeight: 700, color: "#1a9078" }}
           >
             لوحة التحكم
           </Typography>
@@ -166,7 +164,7 @@ const DashboardHome = () => {
             title="إجمالي الدورات"
             value="24"
             progress={70}
-            color="primary"
+            color="#FF6B6B"
             icon={BookOpen}
           />
         </Grid>
@@ -175,7 +173,7 @@ const DashboardHome = () => {
             title="الدورات المكتملة"
             value="18"
             progress={85}
-            color="success"
+            color="#4ECDC4"
             icon={CheckSquare}
           />
         </Grid>
@@ -184,7 +182,7 @@ const DashboardHome = () => {
             title="الشهادات المكتسبة"
             value="12"
             progress={50}
-            color="secondary"
+            color="#FFB900"
             icon={Award}
           />
         </Grid>
@@ -202,7 +200,14 @@ const DashboardHome = () => {
               >
                 <Button
                   variant="outlined"
-                  color="primary"
+                  sx={{
+                    color: "#1a9078",
+                    borderColor: "#1a9078",
+                    "&:hover": {
+                      borderColor: "#158970",
+                      backgroundColor: "rgba(26, 144, 120, 0.04)",
+                    },
+                  }}
                   startIcon={<TrendingUp size={16} />}
                 >
                   عرض الكل
@@ -215,6 +220,7 @@ const DashboardHome = () => {
                   time="منذ ساعتين"
                   type="video"
                   icon={Video}
+                  color="#FF6B6B"
                 />
                 <Divider variant="inset" component="li" />
                 <ActivityItem
@@ -222,6 +228,7 @@ const DashboardHome = () => {
                   time="منذ 3 ساعات"
                   type="test"
                   icon={FileText}
+                  color="#4ECDC4"
                 />
                 <Divider variant="inset" component="li" />
                 <ActivityItem
@@ -229,6 +236,7 @@ const DashboardHome = () => {
                   time="منذ 5 ساعات"
                   type="course"
                   icon={Book}
+                  color="#FFB900"
                 />
               </List>
             </CardContent>
@@ -247,16 +255,19 @@ const DashboardHome = () => {
                     title: "تسليم المشروع النهائي",
                     deadline: "غداً",
                     priority: "عالي",
+                    color: "#FF6B6B",
                   },
                   {
                     title: "اختبار منتصف الفصل",
                     deadline: "خلال يومين",
                     priority: "متوسط",
+                    color: "#4ECDC4",
                   },
                   {
                     title: "مراجعة الدرس السابق",
                     deadline: "خلال 3 أيام",
                     priority: "منخفض",
+                    color: "#FFB900",
                   },
                 ].map((task, index) => (
                   <Paper
@@ -274,13 +285,10 @@ const DashboardHome = () => {
                     <Chip
                       label={task.priority}
                       size="small"
-                      color={
-                        task.priority === "عالي"
-                          ? "error"
-                          : task.priority === "متوسط"
-                          ? "warning"
-                          : "success"
-                      }
+                      sx={{
+                        bgcolor: task.color,
+                        color: "white",
+                      }}
                     />
                     <Box sx={{ textAlign: "right" }}>
                       <Typography variant="subtitle2">{task.title}</Typography>
@@ -383,10 +391,10 @@ const Dashboard = () => {
                   py: 1.5,
                   px: 2,
                   borderRadius: 1,
-                  bgcolor: isActive ? "action.selected" : "transparent",
-                  color: isActive ? "primary.main" : "text.primary",
+                  bgcolor: isActive ? "#1a9078" : "transparent",
+                  color: isActive ? "white" : "text.primary",
                   "&:hover": {
-                    bgcolor: "action.hover",
+                    bgcolor: isActive ? "#158970" : "action.hover",
                   },
                   display: "flex",
                   justifyContent: "flex-end",
@@ -410,9 +418,9 @@ const Dashboard = () => {
           right: 16,
           bottom: 16,
           zIndex: 1100,
-          bgcolor: "primary.main",
+          bgcolor: "#1a9078",
           color: "white",
-          "&:hover": { bgcolor: "primary.dark" },
+          "&:hover": { bgcolor: "#158970" },
         }}
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >

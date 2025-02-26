@@ -41,7 +41,7 @@ const Home = () => {
       <div className="relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold text-indigo-600 mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-[#1a9078] mb-6">
               مرحباً بكم في آمن تماماً
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-3xl mx-auto">
@@ -53,13 +53,13 @@ const Home = () => {
                 onClick={() =>
                   toast.success("سيتم تحويلك إلى صفحة التسجيل قريباً!")
                 }
-                className="bg-indigo-600 text-white px-8 py-3 rounded-lg hover:bg-indigo-700 transition-colors shadow-lg hover:shadow-xl"
+                className="bg-[#1a9078] text-white px-8 py-3 rounded-lg hover:bg-[#158970] transition-colors shadow-lg hover:shadow-xl"
               >
                 ابدأ الآن
               </button>
               <button
                 onClick={() => toast.info("شاهد الفيديو التعريفي قريباً!")}
-                className="bg-white text-indigo-600 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl border border-indigo-200"
+                className="bg-white text-[#1a9078] px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors shadow-lg hover:shadow-xl border border-[#1a9078]"
               >
                 شاهد الفيديو
               </button>
@@ -79,8 +79,8 @@ const Home = () => {
                 onClick={() => handleServiceClick(service.title)}
                 className="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer"
               >
-                <div className="bg-indigo-50 p-3 rounded-full w-fit mb-6">
-                  <IconComponent className="h-8 w-8 text-indigo-600" />
+                <div className="bg-[#1a9078]/10 p-3 rounded-full w-fit mb-6">
+                  <IconComponent className="h-8 w-8 text-[#1a9078]" />
                 </div>
                 <h3 className="text-xl font-semibold mb-4">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
