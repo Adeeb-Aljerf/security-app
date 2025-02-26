@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation, Routes, Route } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
@@ -17,17 +17,9 @@ import {
   Paper,
   Button,
   IconButton,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Badge,
   Container,
   Chip,
   Stack,
-  Tooltip,
 } from "@mui/material";
 import {
   Home,
@@ -50,6 +42,8 @@ import {
   HelpCircle,
   TrendingUp,
   Clock,
+  Menu,
+  X,
 } from "lucide-react";
 
 const StatsCard = ({ title, value, progress, color, icon: Icon }) => (
@@ -157,15 +151,17 @@ const ActivityItem = ({ title, time, type, icon: Icon }) => (
 const DashboardHome = () => {
   return (
     <Box>
-      <Grid container spacing={3}>
+      <Grid container spacing={{ xs: 2, md: 3 }}>
         <Grid item xs={12}>
-          <Typography variant="h4" sx={{ mb: 4, fontWeight: 700 }}>
+          <Typography
+            variant="h4"
+            sx={{ mb: { xs: 2, md: 4 }, fontWeight: 700 }}
+          >
             لوحة التحكم
           </Typography>
         </Grid>
 
-        {/* Stats Cards */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StatsCard
             title="إجمالي الدورات"
             value="24"
@@ -174,7 +170,7 @@ const DashboardHome = () => {
             icon={BookOpen}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StatsCard
             title="الدورات المكتملة"
             value="18"
@@ -183,7 +179,7 @@ const DashboardHome = () => {
             icon={CheckSquare}
           />
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} sm={6} md={4}>
           <StatsCard
             title="الشهادات المكتسبة"
             value="12"
@@ -193,8 +189,7 @@ const DashboardHome = () => {
           />
         </Grid>
 
-        {/* Recent Activity */}
-        <Grid item xs={12} md={8}>
+        <Grid item xs={12} lg={8}>
           <Card elevation={0} sx={{ borderRadius: 2 }}>
             <CardContent>
               <Box
@@ -240,8 +235,7 @@ const DashboardHome = () => {
           </Card>
         </Grid>
 
-        {/* Upcoming Tasks */}
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} lg={4}>
           <Card elevation={0} sx={{ borderRadius: 2 }}>
             <CardContent>
               <Typography variant="h6" sx={{ mb: 3 }}>
@@ -307,10 +301,12 @@ const DashboardHome = () => {
 
 const Dashboard = () => {
   const location = useLocation();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleNavigation = (path, label) => {
     if (label !== "الرئيسية") {
       toast.success("🚀 هذه الميزة قادمة قريباً!");
+      setIsMobileMenuOpen(false);
       return;
     }
   };
@@ -350,22 +346,26 @@ const Dashboard = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      {/* Sidebar */}
       <Box
         component="nav"
+        className={isMobileMenuOpen ? "open" : ""}
         sx={{
-          width: "280px",
+          width: { xs: "100%", md: "280px" },
           flexShrink: 0,
           position: "fixed",
-          right: 0,
+          right: { xs: "-100%", md: 0 },
           top: "64px",
           height: "calc(100vh - 64px)",
           bgcolor: "background.paper",
-          borderLeft: 1,
+          borderLeft: { xs: 0, md: 1 },
           borderColor: "divider",
           overflowY: "auto",
           zIndex: 1000,
           boxShadow: 1,
+          transition: "right 0.3s ease",
+          "&.open": {
+            right: 0,
+          },
         }}
       >
         <List sx={{ p: 2 }}>
@@ -403,16 +403,32 @@ const Dashboard = () => {
         </List>
       </Box>
 
-      {/* Main Content */}
+      <IconButton
+        sx={{
+          display: { xs: "flex", md: "none" },
+          position: "fixed",
+          right: 16,
+          bottom: 16,
+          zIndex: 1100,
+          bgcolor: "primary.main",
+          color: "white",
+          "&:hover": { bgcolor: "primary.dark" },
+        }}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      >
+        {isMobileMenuOpen ? <X /> : <Menu />}
+      </IconButton>
+
       <Box
         component="main"
         sx={{
           flexGrow: 1,
           marginTop: "64px",
-          marginRight: "280px",
-          p: 3,
+          marginRight: { xs: 0, md: "280px" },
+          p: { xs: 1, sm: 2, md: 3 },
           bgcolor: "#f5f5f5",
           minHeight: "calc(100vh - 64px)",
+          transition: "margin-right 0.3s ease",
         }}
       >
         <Container maxWidth="xl">

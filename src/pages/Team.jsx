@@ -22,7 +22,6 @@ const teamMembers = [
     image: adeeb,
     bio: "متخصصة في تطوير حلول الأمن الرقمي وحماية البيانات",
   },
-
   {
     name: "Feras Elisas",
     role: "مديرة التوعية الأمنية",
@@ -41,14 +40,12 @@ const teamMembers = [
     image: reda,
     bio: "متخصصة في برامج التوعية الأمنية وتثقيف المستخدمين",
   },
-
   {
     name: "Salim Al-Bitar",
     role: "المسؤول عن تصميم واجهة المستخدم",
     image: salim,
     bio: "خبير في تحليل التهديدات الأمنية والاستجابة للحوادث السيبرانية",
   },
-
   {
     name: "Rama Alsabagh",
     role: "مديرة التوعية الأمنية",
@@ -76,7 +73,7 @@ const Team = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[280px] mx-auto sm:max-w-7xl sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="text-5xl font-bold text-indigo-600 mb-6">
             فريق العمل
@@ -86,22 +83,21 @@ const Team = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1 h-[420px] relative"
+              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all transform hover:-translate-y-1 h-[420px] sm:h-[440px] md:h-[460px] relative"
             >
               <img
                 src={member.image}
                 alt={member.name}
-                className="w-full h-64 object-cover"
+                className="w-full h-64 sm:h-64 md:h-72 object-cover object-center"
               />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2 text-center">
                   {member.name}
                 </h3>
-                {/* <p className="text-indigo-600">{member.role}</p> */}
                 <div className="absolute bottom-6 left-6 right-6">
                   <button
                     onClick={() => handleContactMember(member.name)}
